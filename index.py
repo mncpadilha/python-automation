@@ -1,3 +1,4 @@
+import requests
 import pandas as pd
 from pandas import read_excel
 
@@ -9,7 +10,7 @@ class Entrega():
         self.cep = cep
         self.complemento = complemento
 
-def send_response(entrega):
+def send_request(entrega):
     url = "https://docs.google.com/forms/d/e/1FAIpQLSeGkKoum1HEonSxWeZP8r2PDHBncBVxRn61O4x4SwgTILDWtQ/formResponse"
 
     data = {
@@ -21,7 +22,7 @@ def send_response(entrega):
     }
 
     print(data)
-    result = requests.post(url_test, data)
+    result = requests.post(url, data)
 
     print(result)
 
@@ -31,8 +32,15 @@ def excel_file(filename):
 
     data = pd.read_excel(filename + ".xlsx", 0)
 
-    for name, sheet in data.items():
-        print(sheet)
+    for i in range(data.shape[0]):
+        itemEntrega = data.iloc[i]["Item de entrega"]
+        produto     = data.iloc[i]["Produto"]
+        cep         = data.iloc[i]["CEP"]
+        endereco    = data.iloc[i]["Endereço"]
+        complemento = data.iloc[i]["Complemento"]
+
+        entrega = Entrega(itemEntrega, produto, endereco, cep, complemento)
+        send_request(entrega)
 
 def main():
     filename = input("Caminho e o Nome da planilha (ex: ~/Desktop/automacao):\n")
