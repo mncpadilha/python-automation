@@ -1,6 +1,14 @@
 import pandas as pd
 from pandas import read_excel
 
+class Entrega():
+    def __init__(self, itemEntrega, produto, endereco, cep, complemento):
+        self.itemEntrega = itemEntrega
+        self.produto = produto
+        self.endereco = endereco
+        self.cep = cep
+        self.complemento = complemento
+
 def send_response(entrega):
     url_test = "https://docs.google.com/forms/d/e/1FAIpQLSfc5gkEAHvXB9zSZYHUewj466yhpE2_hf7r1JzJYu088VgIzA/formResponse"
     url_def = "https://docs.google.com/forms/d/e/1FAIpQLSeGkKoum1HEonSxWeZP8r2PDHBncBVxRn61O4x4SwgTILDWtQ/formResponse"
