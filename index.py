@@ -10,15 +10,16 @@ class Entrega():
         self.complemento = complemento
 
 def send_response(entrega):
+    url = "https://docs.google.com/forms/d/e/1FAIpQLSfZ0-8mzregRLTmn6xo7q05Camz95F4fkWomU5q8OBSnHWg0g/formResponse"
     url_test = "https://docs.google.com/forms/d/e/1FAIpQLSfc5gkEAHvXB9zSZYHUewj466yhpE2_hf7r1JzJYu088VgIzA/formResponse"
-    url_def = "https://docs.google.com/forms/d/e/1FAIpQLSeGkKoum1HEonSxWeZP8r2PDHBncBVxRn61O4x4SwgTILDWtQ/formResponse"
+    url_monica = "https://docs.google.com/forms/d/e/1FAIpQLSeGkKoum1HEonSxWeZP8r2PDHBncBVxRn61O4x4SwgTILDWtQ/formResponse"
 
     data = {
         "entry.11703947"   : "Monica Maria Wanderley Padilha",
-        "entry.283002341"  : "Item Entrega",
-        "entry.96278573"   : "CEP",
-        "entry.1587431302" : "Endereço",
-        "entry.1495180370" : "Complemento"
+        "entry.283002341"  : entrega.itemEntrega,
+        "entry.96278573"   : entrega.cep,
+        "entry.1587431302" : entrega.endereco,
+        "entry.1495180370" : entrega.complemento
     }
 
     print(data)
