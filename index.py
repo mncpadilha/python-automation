@@ -25,13 +25,18 @@ def send_response(entrega):
 
     print(result)
 
-def excel_file():
+def excel_file(filename):
     pd.set_option("display.max_rows", 1000)
     pd.set_option("display.max_columns", 10)
 
-    data = pd.read_excel("automacao.xlsx", "Planilha1")
+    data = pd.read_excel(filename + ".xlsx", 0)
 
     for name, sheet in data.items():
         print(sheet)
 
-excel_file()
+def main():
+    filename = input("Caminho e o Nome da planilha (ex: ~/Desktop/automacao):\n")
+    excel_file(filename)
+
+main()
+
